@@ -7,6 +7,8 @@ This is a spring boot application and so will start with an embedded container t
 application.yml
 This is where port and database configuration are setup
 
+We have connections to both postgresql and mysql so we can do development on any one.
+
 ##How to test REST API.
 1. Open chrome and go to chrome://apps
 2. Install Postman if not already installed.
@@ -43,3 +45,8 @@ json
     }
 }
 ```
+
+##Account Services Test
+This is a get request and should get 5 accounts.
+http://localhost:8090/accservices/556677/accounts
+
