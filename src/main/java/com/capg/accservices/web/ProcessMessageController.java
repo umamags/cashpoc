@@ -27,7 +27,7 @@ public class ProcessMessageController {
 		return "Test API works from CashPOC application";
     }
 	
-	@RequestMapping(value="/cashpoc/processMessageApi",method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value="/cashpoc/processMessageApi",method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public String processMessage(@RequestBody CashMessage message) {
 		System.out.println("Message Processed::" + message.toString());
 		return "Message is Processed::" + message.toString();
