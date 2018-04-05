@@ -3,6 +3,19 @@ SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
+CREATE TABLE `dup_check_history` (
+  `message_id` char(10) NOT NULL,
+  `active_flg` char(1) NOT NULL
+);
+
+CREATE TABLE `msg_audit_log` (
+  `audit_sno` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `message_id` char(10) NOT NULL,
+  `message_ts` timestamp NOT NULL,
+  `message_content` varchar(200) NOT NULL
+);
+
+
 DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
   `account_no` int(11) NOT NULL,

@@ -2,12 +2,14 @@ package com.capg.accservices.web;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.capg.accservices.model.CashMessage;
 /***
  * Cash Poc services related API controller
  *
@@ -25,12 +27,12 @@ public class ProcessMessageController {
 		return "Test API works from CashPOC application";
     }
 	
-	@RequestMapping(value="/cashpoc/processMessageApi",method = RequestMethod.POST)
-    public String processMessage(@RequestBody Object message) {
-		System.out.println("Message Processed::" + message);
-		return "Message is Processed::" + message;
+	@RequestMapping(value="/cashpoc/processMessageApi",method = RequestMethod.POST, consumes = "application/json")
+    public String processMessage(@RequestBody CashMessage message) {
+		System.out.println("Message Processed::" + message.toString());
+		return "Message is Processed::" + message.toString();
     }
-
+	
 	@RequestMapping(value="/cashpoc/checkDuplicateMessage",method = RequestMethod.POST)
     public String checkDuplicateMessage(@RequestBody Object message) {
 		System.out.println("Check Duplicate Message:" + message);
