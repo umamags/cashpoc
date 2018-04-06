@@ -7,18 +7,11 @@ import org.springframework.stereotype.Service;
 import com.capg.accservices.model.Account;
 import com.capg.accservices.model.Customer;
 import com.capg.accservices.model.Transaction;
-import com.capg.accservices.paymentValidatoinXmlbeans.ValidatePaymentDetailsReq;
+import com.capg.accservices.paymentValidationXmlbeans.ValidatePaymentDetailsReq;
 import com.capg.accservices.returnXmlbeans.Return;
 
 @Service
 public interface AccountService {
 
-	public List<Account> getCustomerAccounts(Integer customerId);
-	public Account getAccountDetailsById(Integer accountId);
-	public void depositeAmount(Integer accountNo,Double amount) ;
-	public void saveCustomerDetails(Customer customerDetails);
-	public double withdrawBillAmountandDepositCC(Integer accountNo,Double amount,Long cardNo,Double payableAmount) ;	
-	public double withdrawAmount(Integer accountNo,Double amount) ;
-	public List<Transaction> getRecentTransactions(Integer accountNum, String startDate, String endDate);
 	public Return isMessageIdExist(ValidatePaymentDetailsReq req);
 }

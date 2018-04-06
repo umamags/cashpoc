@@ -1,4 +1,4 @@
-package com.capg.accservices.paymentValidatoinXmlbeans;
+package com.capg.accservices.paymentValidationXmlbeans;
 
 import java.util.Date;
 

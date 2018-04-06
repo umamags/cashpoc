@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.capg.accservices.paymentValidatoinXmlbeans;
+package com.capg.accservices.paymentValidationXmlbeans;
 
 /**
  * @author bvembu
