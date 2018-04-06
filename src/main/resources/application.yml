@@ -3,6 +3,24 @@ server:
   port: 8090
 ---
 spring:
+  profiles: default,local
+  jpa.show-sql : true
+  jpa.generate-ddl : true
+  jpa: 
+   hibernate: 
+    ddl-auto: create-drop
+  datasource:
+   url : jdbc:hsqldb:mem:db_account
+   username : sa
+   password : 
+   driverClassName : org.hsqldb.jdbcDriver
+   testWhileIdle : true
+   validationQuery : SELECT 1
+max:
+ recent:
+  transactions : 10
+---
+spring:
   profiles: postgresql
   jpa.show-sql : true
   jpa.generate-ddl : true
@@ -18,7 +36,7 @@ max:
   transactions : 10
 ---
 spring:
-  profiles: default,local
+  profiles: mysql
   jpa.show-sql : true
   jpa.generate-ddl : true
   datasource:

@@ -16,7 +16,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<docker.image.prefix>caprepo</docker.image.prefix>
-		<spring.version>4.3.7.RELEASE</spring.version>		
+		<spring.version>4.3.7.RELEASE</spring.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -51,17 +51,20 @@
 		<dependency>
 			<groupId>org.springframework.amqp</groupId>
 			<artifactId>spring-rabbit</artifactId>
-			<version>1.6.3.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>9.4.1208</version>
 		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -100,27 +103,29 @@
 			<version>2.4.0</version>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
-			<plugin> 
-				<groupId>com.spotify</groupId> 
-				<artifactId>docker-maven-plugin</artifactId> 
-				<version>0.4.11</version> 
-				<configuration> 
-					<imageName>${docker.image.prefix}/${project.artifactId}</imageName> 
-					<dockerDirectory>src/main/docker</dockerDirectory> 
-					<resources> <resource>
-					<targetPath>/</targetPath> 
-					<directory>${project.build.directory}</directory> 
-					<include>${project.build.finalName}.war</include> 
-					</resource> </resources> 
-				</configuration> 
+
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.11</version>
+				<configuration>
+					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+					<dockerDirectory>src/main/docker</dockerDirectory>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.war</include>
+						</resource>
+					</resources>
+				</configuration>
 			</plugin>
 
 		</plugins>

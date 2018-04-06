@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Configuration
 @Component
 @Entity
-@Table(name = "Account")
+@Table(name = "Account", schema="public")
 
 public class Account {
 

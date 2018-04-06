@@ -25,10 +25,13 @@ import org.springframework.web.client.RestTemplate;
 
 import com.capg.accservices.dao.AccountDao;
 import com.capg.accservices.dao.CustomerDao;
+import com.capg.accservices.dao.MessageDAO;
 import com.capg.accservices.dao.TransactionDao;
 import com.capg.accservices.model.Account;
 import com.capg.accservices.model.Customer;
 import com.capg.accservices.model.Transaction;
+import com.capg.accservices.paymentValidatoinXmlbeans.ValidatePaymentDetailsReq;
+import com.capg.accservices.returnXmlbeans.Return;
 import com.capg.accservices.service.AccountService;
 
 
@@ -43,6 +46,9 @@ public class AccountServiceImpl implements AccountService{
 
 	@Autowired
 	private TransactionDao transactionDao;
+	
+	@Autowired
+	private MessageDAO messagesDAO;
 
 	@Value("${max.recent.transactions}")
 	private Integer maxRecentTransactions;
@@ -194,5 +200,24 @@ public class AccountServiceImpl implements AccountService{
 			logger.error(e.getMessage());
 		}
 		return txList;
+	}
+
+	@Override
+	public Return isMessageIdExist(ValidatePaymentDetailsReq req) {
+		boolean found = !messagesDAO.findByMd(req.getPayloadHeader().getMessageId()).isEmpty();
+		if(found)
+			return populateReturn();
+		else
+		{
+			Return ret = new Return();
+			ret.setErrorcode("404");
+			ret.setErrorMessage("Message does not exist");
+			return ret;
+		}
+	}
+
+	private Return populateReturn() {
+		Return ret = new Return("100","SCBUS33XXX","GCGPVResponse12345","15186118", "TZD","1233", "","","1804509","1","1","PayerName","tin1223","1234567890");
+		return ret;
 	}
 }
