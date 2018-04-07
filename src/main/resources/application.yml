@@ -19,6 +19,9 @@ spring:
 max:
  recent:
   transactions : 10
+kafka:
+  bootstrap-servers: localhost:9092
+  topic: cashPoC
 ---
 spring:
   profiles: postgresql
@@ -34,6 +37,9 @@ spring:
 max:
  recent:
   transactions : 10
+kafka:
+  bootstrap-servers: localhost:9092
+  topic: cashPoC
 ---
 spring:
   profiles: mysql
@@ -49,6 +55,9 @@ spring:
 max:
  recent:
   transactions : 10
+kafka:
+  bootstrap-servers: localhost:9092
+  topic: cashPoC
 ---
 spring:
   profiles: docker
@@ -64,3 +73,6 @@ spring:
 max:
  recent:
   transactions : 10
+kafka:
+  bootstrap-servers: localhost:9092
+  topic: cashPoC
