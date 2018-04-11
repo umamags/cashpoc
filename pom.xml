@@ -20,7 +20,7 @@
 
 	<modules>
 		<module>discovery-service</module>
-		<module>cashpoc</module>
+		<module>tzcashservices</module>
 		<module>gateway-service</module>
 		<module>kafka-sender</module>
 		<module>kafka-reciever</module>
