@@ -1,0 +1,21 @@
+---
+server:
+  port: ${PORT:3333}
+---
+spring:
+  application:
+    name: kafka-reciever-service
+eureka:  
+  client:
+    serviceUrl:
+      defaultZone: ${DISCOVERY_URL:http://localhost:8761}/eureka/
+    registerWithEureka: false
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2      
+ribbon:
+  eureka:
+    enabled: true
+kafka:
+  bootstrap-servers: localhost:9092
+  topic: cashPoC
