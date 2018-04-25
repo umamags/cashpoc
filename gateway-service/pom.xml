@@ -47,7 +47,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.capg.accservices.Application</mainClass>
+					<mainClass>com.capg.accservices.GatewayApplication</mainClass>
 					<addResources>true</addResources>
 				</configuration>
 				<executions>
