@@ -17,5 +17,5 @@ ribbon:
   eureka:
     enabled: true
 kafka:
-  bootstrap-servers: localhost:9092
+  bootstrap-servers: 192.168.1.155:9092
   topic: cashPoC

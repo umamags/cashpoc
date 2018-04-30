@@ -1,6 +1,5 @@
 info:
-  component: Edge Server
-  
+  component: Edge Server  
 endpoints:
   restart:
     enabled: true
@@ -8,34 +7,40 @@ endpoints:
     enabled: true
   health:
     sensitive: false
-
 zuul:
   routes:
     account: 
       path: /a/**
-      serviceId: cashPoC-service       
-
+      serviceId: cashPoC-service
 ribbon:
   eureka:
     enabled: true
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-    registerWithEureka: false
-      
 server:
   port: 8765
-
 logging:
   level:
     ROOT: INFO
-    org.springframework.web: DEBUG
-    
+    org.springframework.web: DEBUG    
 hystrix:
  command:
   default:
    execution:
     timeout:
      enabled: false
+---
+spring:
+  profiles: default,local
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    registerWithEureka: false
+---      
+spring:
+  profiles: docker
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.99.100:8761/eureka/
+    registerWithEureka: false
+---

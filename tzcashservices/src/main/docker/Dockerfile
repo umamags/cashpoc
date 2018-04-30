@@ -1,6 +1,6 @@
-FROM maven
-ADD accountservices-1.0.war app.war
-EXPOSE 8090:8090
-RUN sh -c 'touch /app.war'
-ENV JAVA_OPTS=""
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=container","-jar","/app.war"]
+FROM java:8
+MAINTAINER Cashpoc
+COPY TzCashServices-1.0.jar /opt/lib/TzCashServices.jar
+ENTRYPOINT ["java"]
+CMD ["-Dspring.profiles.active=docker", "-jar", "/opt/lib/TzCashServices.jar"]
+EXPOSE 2222:2222

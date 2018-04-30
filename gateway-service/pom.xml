@@ -47,7 +47,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.capg.accservices.Application</mainClass>
+					<mainClass>com.capg.accservices.GatewayApplication</mainClass>
 					<addResources>true</addResources>
 				</configuration>
 				<executions>
@@ -57,6 +57,23 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.11</version>
+				<configuration>
+					<imageName>gateway-service</imageName>
+					<dockerDirectory>src/main/docker</dockerDirectory>
+					<dockerHost>https://192.168.99.100:2376</dockerHost>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
