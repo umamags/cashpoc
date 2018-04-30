@@ -1,0 +1,42 @@
+version: '3'
+services:
+    eureka-server:
+        container_name: eureka-server
+        image: discovery-service:latest
+        expose:
+            - 8761
+        ports:
+            - 8761:8761
+    zuul-server:
+        container_name: zuul-server
+        image: gateway-service:latest
+        expose:
+            - 8765
+        ports:
+            - 8765:8765
+        links:
+            - eureka-server:eureka-server
+        depends_on:
+            - eureka-server
+    TzCashService:
+        container_name: tzcashservice
+        image: tzcash:latest
+        expose:
+            - 2222
+        ports:
+            - 2222:2222
+        links:
+            - eureka-server:eureka-server
+        depends_on:
+            - eureka-server
+    kafkaSender:
+        container_name: kafkasender
+        image: kafkasender-service:latest
+        expose:
+            - 4444
+        ports:
+            - 4444:4444
+        links:
+            - eureka-server:eureka-server
+        depends_on:
+            - eureka-server
